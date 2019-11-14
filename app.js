@@ -78,20 +78,6 @@ app.get("/:phrase", (req, res) => {
           })
         
     }
-
-    // 
-
-    // fs.readFile(
-    //     jeromeImagePath, ‘base64’,
-    //     (err, base64Image) => {
-    //         // 2. Create a data URL
-    //         const dataUrl = `data:image/jpeg;base64, ${base64Image}`
-    //         return res.send(`<img src=${dataUrl}>`);
-    //     }
-    // );
-
-
-    
   });
 
 app.listen(port, () => {
