@@ -1,6 +1,6 @@
 # Jerome Says
 
-A Node + Express API to poke fun at a friend.  API is hosted at [](jeromesays.gq)
+A Node + Express API to poke fun at a friend.  API is hosted at [jeromesays.gq](jeromesays.gq)
 
 ## Usage
 
