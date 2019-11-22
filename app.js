@@ -81,6 +81,19 @@ app.get("/:phrase", (req, res) => {
     }
   });
 
+app.post("/", (req, res) => {
+  const phrase = req.body.text
+  if(phrase !== 'favicon.ico'){
+      let encodedPhrase = encodeURIComponent(phrase)
+      let newUrl = "http://jeromesays.gq/" + encodedPhrase
+      let result = {"text": newUrl}
+      return res.json(result)
+      // jeromeSays(phrase)
+      // sleep(2000).then(() => {
+          // res.status(200).sendFile("./export/heSaidIt.jpg",{root: __dirname});
+  }
+});
+
 app.listen(port, () => {
   console.log(`running at port ${port}`);
 });
