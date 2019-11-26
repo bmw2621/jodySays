@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content="https://creepyface.io/content/0a479c58-51a6-4fd8-a56e-8f32a06eb0e0" />
+    <meta property="og:title" content="Creepyface" />
+    <meta property="og:description" content="The Javascript library that makes your face follow the pointer" />
+    <meta property="og:image" content="https://creepyface.io/logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Creepyface</title>
+    <style media="screen">
+      html, body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: black;
+      }
+
+      #bg {
+        background: url("https://wallpapercave.com/wp/wp4378197.jpg") no-repeat fixed bottom right;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        margin-bottom: 2rem;
+        max-width: 300px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px gray;
+      }
+
+      footer {
+        color: white;
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+
+    <script src="https://creepyface.io/creepyface.js"></script>
+  </head>
+  <body>
+    <div id="bg">
+      <img
+        data-creepyface
+        src="./img/serious.jpg"
+        data-src-hover="./img/hover.jpg"
+        data-src-look-0="./img/0.jpg"
+        data-src-look-45="./img/45.jpg"
+        data-src-look-90="./img/90.jpg"
+        data-src-look-135="./img/135.jpg"
+        data-src-look-180="./img/180.jpg"
+        data-src-look-225="./img/225.jpg"
+        data-src-look-270="./img/270.jpg"
+        data-src-look-315="./img/315.jpg"
+      />
+    </div>
+    <footer>
+      Powered by <a target="_blank" href="https://vetswhocode.io">your shithead students</a>
+    </footer>
+  </body>
+</html>

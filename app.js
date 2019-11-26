@@ -1,8 +1,8 @@
 const express = require("express");
-
-const app = express();
+const path = require('path');
 const bodyparser = require("body-parser");
 
+const app = express();
 const port = process.env.PORT || 3200;
 
 const Jimp = require('jimp');
@@ -65,11 +65,11 @@ function jeromeSays(phrase){
       console.error(err);
     });
 }
-
+app.use("/img", express.static(path.join(__dirname, 'img')));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-app.get("/:phrase", (req, res) => {
+app.get("/say/:phrase", (req, res) => {
     const phrase = req.params.phrase
     if(phrase !== 'favicon.ico'){
         console.log(phrase)
@@ -81,7 +81,7 @@ app.get("/:phrase", (req, res) => {
     }
   });
 
-app.post("/", (req, res) => {
+app.post("/say/", (req, res) => {
   const phrase = req.body.text
   if(phrase !== 'favicon.ico'){
       let encodedPhrase = encodeURIComponent(phrase)
@@ -92,6 +92,10 @@ app.post("/", (req, res) => {
       // sleep(2000).then(() => {
           // res.status(200).sendFile("./export/heSaidIt.jpg",{root: __dirname});
   }
+});
+
+app.get('/',function(req,res) {
+  res.sendFile("./creepyface.html",{root: __dirname});
 });
 
 app.listen(port, () => {
