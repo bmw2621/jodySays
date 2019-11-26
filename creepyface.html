@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:url" content="https://creepyface.io/content/0a479c58-51a6-4fd8-a56e-8f32a06eb0e0" />
-    <meta property="og:title" content="Creepyface" />
+    <meta property="og:title" content="JeromeSay" />
     <meta property="og:description" content="The Javascript library that makes your face follow the pointer" />
-    <meta property="og:image" content="https://creepyface.io/logo.png" />
+    <meta property="og:image" content="./img/serious.jpg" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Creepyface</title>
     <style media="screen">
@@ -20,6 +19,8 @@
         justify-content: center;
         flex-direction: column;
         background-color: black;
+        color: white;
+        font-family: 'Roboto', sans-serif;
       }
 
       #bg {
@@ -29,8 +30,13 @@
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+      }
+
+      p {
+        color: #555;
       }
 
       img {
@@ -41,8 +47,7 @@
       }
 
       footer {
-        color: white;
-        font-family: 'Roboto', sans-serif;
+
       }
     </style>
 
@@ -50,6 +55,7 @@
   </head>
   <body>
     <div id="bg">
+      <h1> Jerome Says API</h1>
       <img
         data-creepyface
         src="./img/serious.jpg"
@@ -63,6 +69,14 @@
         data-src-look-270="./img/270.jpg"
         data-src-look-315="./img/315.jpg"
       />
+      <h2>Usage</h2>
+      <h3>GET Request:</h3>
+      <p>Make request to http://jeromesays.gq/ followed by a url encoded string.</p>
+      <p>Response will be a jpeg of Jerome saying your string</p>
+      <br>
+      <h3>Post Request:</h3>
+      <p>Make request to http://jeromesays.gq/ with "text" parameter as a string</p>
+      <p>Response be a JSON object with text atrribute giving html link to the above GET request.  This was developed to support Slackbot.</p>
     </div>
     <footer>
       Powered by <a target="_blank" href="https://vetswhocode.io">your shithead students</a>
