@@ -13,7 +13,7 @@ const sleep = (milliseconds) => {
 
 function jeromeSays(phrase){
   //if you are following along, create the following 2 images relative to this script:
-  let rawImages = ['raw/jeromeSays.jpg','raw/musclesSays.jpg','raw/motivationSays.jpg']
+  let rawImages = ['raw/jeromeSays.jpg','raw/musclesSays.jpg','raw/motivationSays.jpg','raw/captainJS.jpg']
   let imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
 
   let imgActive = 'active/heSaidIt.jpg';
