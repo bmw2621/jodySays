@@ -16,8 +16,8 @@ function jeromeSays(phrase){
   let rawImages = ['raw/af1.jpg','raw/navy1.jpg','raw/navy2.jpg','raw/civ1.jpg','raw/civ2.jpg','raw/civ3.jpg','raw/civ4.jpg','raw/civ5.jpg','raw/civ6.jpg']
   let imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
 
-  let imgActive = 'active/heSaidIt.jpg';
-  let imgExported = 'export/heSaidIt.jpg';
+  let imgActive = '/tmp/active/heSaidIt.jpg';
+  let imgExported = '/tmp/export/heSaidIt.jpg';
 
   let textData = {
     text: phrase, //the text to be rendered on the image
@@ -75,7 +75,7 @@ app.get("/say/:phrase", (req, res) => {
         console.log(phrase)
         jeromeSays(phrase)
         sleep(2000).then(() => {
-            res.status(200).sendFile("./export/heSaidIt.jpg",{root: __dirname});
+            res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
           })
 
     }
@@ -85,7 +85,7 @@ app.post("/say/", (req, res) => {
   const phrase = req.body.text
   if(phrase !== 'favicon.ico'){
       let encodedPhrase = encodeURIComponent(phrase)
-      let newUrl = "http://jeromesays.gq/" + encodedPhrase
+      let newUrl = "http://jodysays.ml/" + encodedPhrase
       let result = {"text": newUrl}
       return res.json(result)
       // jeromeSays(phrase)
