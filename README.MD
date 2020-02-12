@@ -8,7 +8,7 @@ Make a simple get call to the API with a string appended to the URL.  API return
 
 Ex:
 
-`http://jeromesays.gq/VetsWhoCode%20Hoorah`
+`http://jeromesays.gq/say/VetsWhoCode%20Hoorah`
 
 
 Browsers automatically fill whitespace and convert most special characters to URL encoding, otherwise insert it at the URL line or command line manually
