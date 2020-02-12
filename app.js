@@ -208,6 +208,7 @@ app.post("/eyerolljody/", (req, res) => {
 app.get('/',function(req,res) {
   res.sendFile("./public/index.html",{root: __dirname});
 });
+app.use(express.static('public'))
 
 app.listen(port, () => {
   console.log(`running at port ${port}`);
