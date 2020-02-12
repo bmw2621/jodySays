@@ -1,14 +1,28 @@
-# Jerome Says
+# Jody Says
 
-A Node + Express API to poke fun at a friend.  API is hosted at [jeromesays.gq](jeromesays.gq)
+A Node + Express API which was forked from JermoneSays repository, to showcase #VetsWhoCode mascot Jody.  API is hosted at [jodysays.ml](jodysays.ml)
 
 ## Usage
 
-Make a simple get call to the API with a string appended to the URL.  API returns a randomly selected jpg of Jerome saying the passed string.
+### GET Request:
 
-Ex:
+Make request to http://jodysays.ml/::characterType::/::phrase::
 
-`http://jeromesays.gq/say/VetsWhoCode%20Hoorah`
+**::characterType::** must be from the table below
+
+|charaterType|Description|
+|---|---|
+jody|	the default #VetsWhoCode mascot Jody
+drilljody |	#VetsWhoCode mascot Jody wearing his brown-round
+madjody	| #VetsWhoCode mascot Jody isn't happy
+eyerolljody	| #VetsWhoCode mascot Jody is a little annoyed
+
+**::phrase::** can be any URI encoded string (most browsers convert to URI coding automatically)
+
+Response will be a jpeg of Jody saying your string
 
 
-Browsers automatically fill whitespace and convert most special characters to URL encoding, otherwise insert it at the URL line or command line manually
+### Post Request:
+Make request to http://jodysays.ml/ with `body.text` field as a string
+
+Response is a JSON object with text attribute giving HTML link to the above GET request. This was developed to support Slackbot development.

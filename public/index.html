@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="JodySay" />
+    <meta property="og:description" content="JodySay API by #VetsWhoCode" />
+    <meta property="og:image" content="./img/serious.jpg" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <title>JodySays</title>
+  </head>
+  <body>
+    <div id="bg">
+      <h1> Jody Says API</h1>
+
+      <h2>Usage</h2>
+      <h3>GET Request:</h3>
+      <p>Make request to http://jodysays.ml/::characterType::/::phrase::</p>
+      <p><code>::characterType::</code> must be from the table below</p>
+      <table>
+        <tr>
+          <td>jody</td>
+          <td>the default #VetsWhoCode mascot Jody</td>
+        </tr>
+        <tr>
+          <td>drilljody</td>
+          <td>#VetsWhoCode mascot Jody wearing his brown-round</td>
+        </tr>
+        <tr>
+          <td>madjody</td>
+          <td>#VetsWhoCode mascot Jody isn't happy</td>
+        </tr>
+        <tr>
+          <td>eyerolljody</td>
+          <td>#VetsWhoCode mascot Jody is a little annoyed<</td>
+        </tr>
+      </table>
+      <p><code>::phrase::</code> can be any URI encoded string (most browsers convert to URI coding automatically)</p>
+      <p>Response will be a jpeg of Jody saying your string</p>
+      <br>
+      <h3>Post Request:</h3>
+      <p>Make request to http://jodysays.ml/::characterType/ with <code>body.text</code> field as a string</p>
+      <p>Response is a JSON object with text atrribute giving HTML link to the above GET request.  This was developed to support Slackbot.</p>
+    </div>
+  </body>
+</html>

@@ -172,6 +172,7 @@ app.post("/drilljody/", (req, res) => {
 
 app.post("/jody/", (req, res) => {
   const phrase = req.body.text
+  console.log(phrase)
   if(phrase !== 'favicon.ico'){
       let encodedPhrase = encodeURIComponent(phrase)
       let newUrl = "http://jodysays.ml/jody/" + encodedPhrase
@@ -200,10 +201,12 @@ app.post("/eyerolljody/", (req, res) => {
   }
 });
 
-
+// ----------------
+// Serve Homepage
+// ----------------
 
 app.get('/',function(req,res) {
-  res.sendFile("./index.html",{root: __dirname});
+  res.sendFile("./public/index.html",{root: __dirname});
 });
 
 app.listen(port, () => {
