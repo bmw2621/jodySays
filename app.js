@@ -11,19 +11,26 @@ const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
 
-function jodySays(phrase, imageType="meme"){
-  //if you are following along, create the following 2 images relative to this script:
-  if(imageType === "meme"){
-    let rawImages = ['raw/af1.jpg','raw/navy1.jpg','raw/navy2.jpg','raw/civ1.jpg','raw/civ2.jpg','raw/civ3.jpg','raw/civ4.jpg','raw/civ5.jpg','raw/civ6.jpg']
-    let imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
-  } else if(imageType === "drill") {
-    let imgRaw = 'raw/jodyDrill.jpg'
-  } else if(imageType === "eyeRoll") {
-    let imgRaw = 'raw/jodyEyeroll.jpg'
-  } else if(imageType === "mad") {
-    let imgRaw = 'raw/jodyMad.jpg'
-  } else {
-    let imgRaw = 'raw/jodyHappy.jpg'
+function jodySays(phrase, imageType){
+  let imageRaw;
+
+  switch(imageType) {
+    case "meme":
+      let rawImages = ['raw/af1.jpg','raw/navy1.jpg','raw/navy2.jpg','raw/civ1.jpg','raw/civ2.jpg','raw/civ3.jpg','raw/civ4.jpg','raw/civ5.jpg','raw/civ6.jpg']
+      imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
+      break;
+    case "drill":
+      imgRaw = 'raw/jodyDrill.jpg'
+      break;
+    case "mad":
+      imgRaw = 'raw/jodyMad.jpg'
+      break;
+    case "eyeroll":
+      imgRaw = 'raw/jodyEyeroll.jpg'
+      break;
+    default:
+      imgRaw = 'raw/jodyHappy.jpg'
+      break;
   }
 
   let imgActive = '/tmp/active/heSaidIt.jpg';
