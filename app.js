@@ -11,10 +11,20 @@ const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
 
-function jeromeSays(phrase){
+function jodySays(phrase, imageType="meme"){
   //if you are following along, create the following 2 images relative to this script:
-  let rawImages = ['raw/af1.jpg','raw/navy1.jpg','raw/navy2.jpg','raw/civ1.jpg','raw/civ2.jpg','raw/civ3.jpg','raw/civ4.jpg','raw/civ5.jpg','raw/civ6.jpg']
-  let imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
+  if(imageType === "meme"){
+    let rawImages = ['raw/af1.jpg','raw/navy1.jpg','raw/navy2.jpg','raw/civ1.jpg','raw/civ2.jpg','raw/civ3.jpg','raw/civ4.jpg','raw/civ5.jpg','raw/civ6.jpg']
+    let imgRaw = rawImages[Math.floor(Math.random() * rawImages.length)]; //a 1024px x 1024px backgroound image
+  } else if(imageType === "drill") {
+    let imgRaw = 'raw/jodyDrill.jpg'
+  } else if(imageType === "eyeRoll") {
+    let imgRaw = 'raw/jodyEyeroll.jpg'
+  } else if(imageType === "mad") {
+    let imgRaw = 'raw/jodyMad.jpg'
+  } else {
+    let imgRaw = 'raw/jodyHappy.jpg'
+  }
 
   let imgActive = '/tmp/active/heSaidIt.jpg';
   let imgExported = '/tmp/export/heSaidIt.jpg';
@@ -65,34 +75,125 @@ function jeromeSays(phrase){
       console.error(err);
     });
 }
+
 app.use("/img", express.static(path.join(__dirname, 'img')));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-app.get("/say/:phrase", (req, res) => {
+// -----------------------------
+// Set Up Get Request Routing
+// -----------------------------
+
+app.get("/drilljody/:phrase", (req, res) => {
     const phrase = req.params.phrase
     if(phrase !== 'favicon.ico'){
         console.log(phrase)
-        jeromeSays(phrase)
+        jodySays(phrase, "drill")
         sleep(2000).then(() => {
             res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
           })
-
     }
   });
 
-app.post("/say/", (req, res) => {
+  app.get("/jody/:phrase", (req, res) => {
+      const phrase = req.params.phrase
+      if(phrase !== 'favicon.ico'){
+          console.log(phrase)
+          jodySays(phrase, "happy")
+          sleep(2000).then(() => {
+              res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
+            })
+      }
+  });
+
+  app.get("/madjody/:phrase", (req, res) => {
+      const phrase = req.params.phrase
+      if(phrase !== 'favicon.ico'){
+          console.log(phrase)
+          jodySays(phrase, "mad")
+          sleep(2000).then(() => {
+              res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
+            })
+      }
+  });
+
+  app.get("/eyerolljody/:phrase", (req, res) => {
+      const phrase = req.params.phrase
+      if(phrase !== 'favicon.ico'){
+          console.log(phrase)
+          jodySays(phrase, "eyeroll")
+          sleep(2000).then(() => {
+              res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
+            })
+      }
+    });
+
+    app.get("/meme/:phrase", (req, res) => {
+        const phrase = req.params.phrase
+        if(phrase !== 'favicon.ico'){
+            console.log(phrase)
+            jodySays(phrase, "meme")
+            sleep(2000).then(() => {
+                res.status(200).sendFile("/tmp/export/heSaidIt.jpg",{root: "/"});
+              })
+        }
+      });
+
+// -----------------------------
+// Set Up Post Request Routing
+// -----------------------------
+
+app.post("/meme/", (req, res) => {
   const phrase = req.body.text
   if(phrase !== 'favicon.ico'){
       let encodedPhrase = encodeURIComponent(phrase)
-      let newUrl = "http://jodysays.ml/" + encodedPhrase
+      let newUrl = "http://jodysays.ml/meme/" + encodedPhrase
       let result = {"text": newUrl}
       return res.json(result)
-      // jeromeSays(phrase)
-      // sleep(2000).then(() => {
-          // res.status(200).sendFile("./export/heSaidIt.jpg",{root: __dirname});
   }
 });
+
+app.post("/drilljody/", (req, res) => {
+  const phrase = req.body.text
+  if(phrase !== 'favicon.ico'){
+      let encodedPhrase = encodeURIComponent(phrase)
+      let newUrl = "http://jodysays.ml/drilljody/" + encodedPhrase
+      let result = {"text": newUrl}
+      return res.json(result)
+  }
+});
+
+app.post("/jody/", (req, res) => {
+  const phrase = req.body.text
+  if(phrase !== 'favicon.ico'){
+      let encodedPhrase = encodeURIComponent(phrase)
+      let newUrl = "http://jodysays.ml/jody/" + encodedPhrase
+      let result = {"text": newUrl}
+      return res.json(result)
+  }
+});
+
+app.post("/madjody/", (req, res) => {
+  const phrase = req.body.text
+  if(phrase !== 'favicon.ico'){
+      let encodedPhrase = encodeURIComponent(phrase)
+      let newUrl = "http://jodysays.ml/madjody/" + encodedPhrase
+      let result = {"text": newUrl}
+      return res.json(result)
+  }
+});
+
+app.post("/eyerolljody/", (req, res) => {
+  const phrase = req.body.text
+  if(phrase !== 'favicon.ico'){
+      let encodedPhrase = encodeURIComponent(phrase)
+      let newUrl = "http://jodysays.ml/eyerolljody/" + encodedPhrase
+      let result = {"text": newUrl}
+      return res.json(result)
+  }
+});
+
+
 
 app.get('/',function(req,res) {
   res.sendFile("./index.html",{root: __dirname});
