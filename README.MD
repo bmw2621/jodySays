@@ -1,5 +1,7 @@
 # Jody Says
 
+![jodylogo](./public/jody.png)
+
 A Node + Express API which was forked from JermoneSays repository, to showcase #VetsWhoCode mascot Jody.  API is hosted at [jodysays.ml](jodysays.ml)
 
 ## Usage
